@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  event-bus: 
+    build: 
+      context: .
+      target: event-bus
+    image: msdemo-event-bus:v1.0     
+    restart: "always"    
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:      
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
+    volumes:
+      - "${RABBITMQ_DATA_VOLUME}/rabbitmq-data:/var/lib/rabbitmq"
+    networks:
+      default: {}
+      msdemo-network:
+        aliases:
+          - msdemo-event-bus
+networks:
+  msdemo-network:
+    external:
+      name: msdemo-nw

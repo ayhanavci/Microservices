@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_activated="false" android:state_active="false" android:state_checkable="false" android:state_checked="false" android:state_focused="false" android:state_hovered="false" android:state_single="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorTextBackground" />
+            <corners android:radius="4dp" />
+            <stroke android:width="2dp" android:color="@color/colorPrimaryDark" android:dashWidth="@dimen/fab_margin" />
+        </shape>
+    </item>
+</selector>

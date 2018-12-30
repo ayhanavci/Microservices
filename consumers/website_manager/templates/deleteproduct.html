@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Delete Product{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<div class="w3-container">    
+  <div class="w3-card-4">
+    <div class="w3-container w3-green">
+      <h3>Confirm deletion</h3>
+    </div>
+    <form action="/delete-product" method="POST" class="w3-container">
+      <p><label for="productid">Product Id</label>
+        <input name="productid" id="productid" value="{{ product_id }}" class="w3-input  w3-border" required readonly></p>        
+      <p><label for="productname">Product Name</label>
+      <input name="productname" id="productname" value="{{ product_name }}" class="w3-input  w3-border" required readonly></p>        
+      <p><button type="submit" class="w3-button w3-green" value="Submit">Delete</button></p>
+    </form>
+  </div>
+  <p><a href="/products" class="w3-bar-item">Back to products</a></p>
+</div>
+{% else %}
+<p>Login first!</p>
+{% endif %}
+{% endblock %}

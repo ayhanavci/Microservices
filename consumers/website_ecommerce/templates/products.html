@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}My Orders{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+
+<div class="w3-responsive">
+  <table class="w3-table-all w3-card-4 w3-hoverable w3-centered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Name</th>      
+        <th>Description</th>      
+        <th>Supplier</th>      
+        <th>CategoryId</th>      
+        <th>Price</th>      
+        <th>Stock</th>
+        <th>Category Name</th>      
+        <th colspan=1>Commands</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td class="align-middle">{{ product[0] }}</td>
+        <td class="align-middle">{{ product[1] }}</td>
+        <td class="align-middle">{{ product[2] }}</td> 
+        <td class="align-middle">{{ product[3] }}</td> 
+        <td class="align-middle">{{ product[4] }}</td>                            
+        <td class="align-middle">{{ product[5] }}</td>
+        <td class="align-middle">{{ product[6] }}</td>
+        <td class="align-middle">{{ product[7] }}</td> 
+        <td class="align-middle">{{ product[8] }}</td>                 
+        <td class="align-middle">
+          <a href="{{ url_for('order_product',id = product[1], name= product[2]) }}">Order
+        </td>            
+      </tr>    
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<br/> 
+<br/>
+
+{% else %}
+<p>Logged out content</p>
+{% endif %}
+{% endblock %}

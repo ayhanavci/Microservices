@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Categories{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+
+<a href="{{ url_for('add_category') }}">Add New Category</a><br></br>
+
+<div class="w3-responsive">
+  <table class="w3-table-all w3-card-4 w3-hoverable w3-centered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Name</th>      
+        <th colspan=3>Commands</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}
+      <tr>
+        <td class="align-middle">{{ category[0] }}</td>
+        <td class="align-middle">{{ category[1] }}</td>
+        <td class="align-middle">{{ category[2] }}</td>                
+        <td class="align-middle">
+          <a href="{{ url_for('view_products',id = category[1]) }}">View Products
+        </td>   
+        <td class="align-middle">
+          <a href="{{ url_for('edit_category',id = category[1]) }}">Edit
+        </td>     
+        <td class="align-middle">
+          <a href="{{ url_for('delete_category',id = category[1]) }}">Delete
+        </td>
+      </tr>
+     
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<br/> 
+<br/>
+
+{% else %}
+<p>Logged out content</p>
+{% endif %}
+{% endblock %}

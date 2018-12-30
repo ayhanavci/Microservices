@@ -1,0 +1,40 @@
+version: '3.7'
+services:    
+  db-event-store:
+    restart: always
+    build: 
+      context: .
+      target: db-event-store
+    image: msdemo-db-event-store:v1.0
+    volumes:          
+      - type: bind
+        source: ./data
+        target: /usr/data/db
+    env_file:
+      - .env      
+    ports:
+      - 25000:${DB_PORT}
+    networks:
+      default: {}      
+      msdemo-nw-event-store:
+        aliases:
+          - msdemo-db-event-store        
+  msdemo-viewer-event-store:
+    build: 
+      context: .
+      target: viewer-event-store
+    image: msdemo-viewer-event-store:v1.0
+    restart: always
+    ports:
+      - 8081:${DB_PORT_EXPRESS}
+    env_file:
+      - .env
+    networks:
+      default: {}      
+      msdemo-nw-event-store:
+        aliases:
+          - msdemo-viewer-event-store
+networks:  
+  msdemo-nw-event-store:
+    external:
+      name: msdemo-nw-event-store

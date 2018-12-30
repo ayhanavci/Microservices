@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  db_accounting:
+    restart: always
+    build:
+      context: .
+      target: db-accounting
+    image: msdemo-db-accounting:v1.0
+    ports:
+      - "5984:5984"
+    volumes:          
+      - type: bind
+        source: ./data
+        target: /opt/couchdb/data     
+    environment:
+      COUCHDB_USER: ${ACCOUNTINGDB_USERNAME}
+      COUCHDB_PASSWORD: ${ACCOUNTINGDB_PASSWORD}
+      COUCHDB_DBNAME: accounting
+    networks:
+      default: {}
+      msdemo_network:
+        aliases:
+          - msdemo-db-accounting      
+networks:
+  msdemo_network:
+    external:
+      name: msdemo-nw

@@ -1,0 +1,31 @@
+version: '3.7'
+services:  
+  event-store-service:  
+    build: 
+      context: .
+      target: event-store-service
+    image: msdemo-event-store:v1.0
+    volumes:          
+      - type: bind
+        source: ./
+        target: /app    
+    command:
+      - /app/run.sh
+    networks:
+      default: {}
+      msdemo-nw:
+        aliases:
+          - msdemo-event-store
+      msdemo-nw-event-store:
+        aliases:
+          - msdemo-event-store      
+networks:
+  msdemo-nw:
+    external:
+      name: msdemo-nw
+  msdemo-nw-event-store:
+    external:
+      name: msdemo-nw-event-store
+
+
+

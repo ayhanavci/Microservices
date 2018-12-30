@@ -1,0 +1,17 @@
+{
+  "name": "service_accounting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "accounting.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node accounting.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.5.3",
+    "express": "^4.16.4",
+    "nano": "^7.1.1"
+  }
+}

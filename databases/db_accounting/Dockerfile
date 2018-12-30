@@ -1,0 +1,1 @@
+FROM couchdb:latest AS db-accounting

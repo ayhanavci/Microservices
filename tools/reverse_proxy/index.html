@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<title>Reverse Proxy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<body>
+
+<div class="w3-container">
+  <h2>Microservice Journey, Reverse Proxy</h2>  
+  <div class="w3-bar w3-black">
+      <button class="w3-bar-item w3-button tablink w3-blue" onclick="openTab(event,'Routing')">Docker Routing</button>
+      <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Webapi')">Web Services Api</button>             
+    </div>
+    
+    <div id="Routing" class="w3-container w3-border tabs"  style="height:750px">
+        <p>Reverse proxy handles routing of the following items on nginx.conf<br> </p>
+        <table class="w3-table-all w3-card-4">
+          <tr>
+            <th>Item</th>
+            <th>Type</th>
+            <th>Path</th>
+            <th>Target Docker Alias</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>eCommerce</td>
+            <td>Web Site</td>
+            <td>/ecommerce</td>
+            <td>http://msdemo-web-ecommerce/</td>
+            <td>Customers can login & logout, view products, product categories, prices, order status. And can place purchase orders.</td>
+          </tr>
+          <tr>
+            <td>Management</td>
+            <td>Web Site</td>
+            <td>/management</td>
+            <td>http://msdemo-web-management/</td>
+            <td>Site Management can Login, Logout, View Yearly Income, View Invoices, Manage Products & Categories</td>
+          </tr>
+          <tr>
+            <td>Customer</td>
+            <td>Rest Web Service</td>
+            <td>/customer</td>
+            <td>http://msdemo-service-customer/</td>
+            <td>Provides the following api: Login, Add, Update, Delete Customer. Set & Get Customer Credit</td>
+          </tr>
+          <tr>
+            <td>Order</td>
+            <td>Rest Web Service</td>
+            <td>/order</td>
+            <td>http://msdemo-service-order/</td>
+            <td> Provides the following api: Place, Get Orders</td>
+          </tr>
+          <tr>
+            <td>Product</td>
+            <td>Rest Web Service</td>
+            <td>/product</td>
+            <td>http://msdemo-service-product/</td>
+            <td>Provides the following api: Add, Update, Remove, Get Products & Product Categories</td>
+          </tr>
+          <tr>
+            <td>Accounting</td>
+            <td>Rest Web Service</td>
+            <td>/accounting</td>
+            <td>http://msdemo-service-accounting/</td>
+            <td>Provides the following api: Get Total Income, Get Invoices</td>
+          </tr>    
+        </table>
+        <p>The requests are proxied into related docker containers, wherever they may be.<br>
+        Clients only need to know Nginx location + Desired Path, Nginx only needs to know the network alias of the related Docker container<br>     
+        Swarm or Kubernetes can deal with containers on different hosts, otherwise "docker network connect" can help<br>
+        If required, expose the required port of the host machine in which container is hosted, and enter its IP in the conf file<br></p>
+    </div>
+  
+    <div id="Webapi" class="w3-container w3-border tabs" style="display:none;height:750px">
+        
+            <p>Web Services have the following api</p>
+            <table class="w3-table-all w3-card-4">
+                <tr>
+                    <td>
+                        <p>Customer Web Service</p>
+                        <ul class="w3-ul w3-light-gray w3-card-4">
+                            <li>login-customer</li>
+                            <li>get-customer</li>
+                            <li>add-customer</li>
+                            <li>update-customer</li>
+                            <li>delete-customer</li>
+                            <li>set-credit</li>
+                            <li>get-credit</li>
+                    </td>      
+                    <td>
+                        <p>Order Web Service</p>
+                        <ul class="w3-ul w3-light-gray w3-card-4">
+                            <li>get-orders</li>
+                            <li>place-order</li>      
+                        </ul>
+                    </td>
+                    <td>
+                        <p>Product Web Service</p>
+                        <ul class="w3-ul w3-light-gray w3-card-4">
+                            <li>get-product</li>
+                            <li>add-product</li>
+                            <li>update-product</li>      
+                            <li>delete-product</li>      
+                            <li>get-category</li>
+                            <li>add-category</li>      
+                            <li>update-category</li>    
+                            <li>delete-category</li>      
+                        </ul>
+                    </td>
+                    <td>
+                        <p>Accounting Web Service</p>
+                        <ul class="w3-ul w3-light-gray w3-card-4">
+                            <li>get-invoices</li>
+                            <li>get-total-income</li>      
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+          
+    </div>  
+    
+</div>
+<script>
+    function openTab(evt, tabName) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("tabs");
+      for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " w3-blue";
+    }
+    </script>
+    <footer class="w3-container w3-light-gray">
+        <p>Ayhan AVCI <a href="http://lain.run">lain.run</a></p>
+        <p><a href="http://github.com/ayhanavci">source@github</a>.</p>
+      </footer>
+</body>
+</html> 
+

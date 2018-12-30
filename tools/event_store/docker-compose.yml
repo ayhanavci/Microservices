@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  builder: 
+    build: 
+      context: .
+      target: builder
+    image: msdemo_event_store_builder:v1.0  
+    volumes:          
+      - type: bind
+        source: ./
+        target: /app
+    command:
+      - /app/build.sh
+  
+

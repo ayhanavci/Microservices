@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Ecommerce</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Microservices Demo</string>
+    <string name="nav_header_subtitle">ayhanavci@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="login_title">Please enter your credentials</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+    <string name="buy">Buy</string>
+    <string name="saved_login_name">login_name</string>
+    <string name="saved_proxy_ip">proxy_ip</string>
+    <string name="saved_login_password">login_password</string>
+    <string name="save_settings">Save Settings</string>
+    <string name="proxy_ip">Proxy IP</string>
+    <string name="settings_title">Please enter server ip address</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

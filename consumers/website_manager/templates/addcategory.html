@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Add New Category{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<div class="w3-container">    
+  <div class="w3-card-4">
+    <div class="w3-container w3-green">
+      <h3>Enter a category name</h3>
+    </div>
+    <form action="/add-category" method="POST" class="w3-container">
+      <p><label for="categoryname">Category Name</label>
+      <input name="categoryname" id="categoryname" class="w3-input  w3-border" required></p>        
+      <p><button type="submit" class="w3-button w3-green" value="Submit">Add</button></p>
+    </form>
+  </div>
+</div>
+{% else %}
+<p>Login first!</p>
+{% endif %}
+{% endblock %}

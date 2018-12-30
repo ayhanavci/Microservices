@@ -1,0 +1,1 @@
+FROM node:alpine as web-service-accounting

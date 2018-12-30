@@ -1,0 +1,64 @@
+CUSTOMER
+Login User
+curl -d '{"UserName":"test", "Password":"test"}' -H "Content-Type: application/json" -X POST http://localhost/customer/login-user/
+
+Add Customer
+curl -d '{"UserName":"stannis", "FullName": "Stannis Baratheon", "Email": "stannis@lain.run", "Password":"pass1", "Credit": "100"}' -H "Content-Type: application/json" -X POST http://localhost/customer/add-user/
+
+Update Customer
+curl -d '{"UserName":"stannis", "FullName": "Stannis Baratheon", "Email": "stannis@lain.run", "Password":"1234", "Credit": "100"}' -H "Content-Type: application/json" -X POST http://localhost/customer/update-user/
+curl -d '{"UserName":"jon", "FullName": "Jon Snow", "Email": "jon@lain.run", "Password":"1234", "Credit": "100"}' -H "Content-Type: application/json" -X POST http://localhost/customer/update-user/
+
+Get Credit
+curl -d '{"UserName":"stannis"}' -H "Content-Type: application/json" -X GET http://localhost/customer/get-credit/
+curl -d '{"UserName":"jon"}' -H "Content-Type: application/json" -X GET http://localhost/customer/get-credit/
+
+Get Customer
+curl -H "Content-Type: application/json" -X GET http://localhost/customer/get-user/jon
+
+Get All Customers
+curl -H "Content-Type: application/json" -X GET http://localhost/customer/get-all-users/
+
+PRODUCT
+Get Categories
+curl -H "Content-Type: application/json" -X GET http://localhost/product/get-categories/
+
+Get Category
+curl -d '{"CategoryId":"26eaff5e-910e-4b3c-b6ef-7281744402c9"}' -H "Content-Type: application/json" -X GET http://localhost/product/get-category-details/
+
+Add Category
+curl -d '{"Name":"Electronics"}' -H "Content-Type: application/json" -X POST http://localhost/product/add-new-category/
+
+Delete Category
+curl -d '{"CategoryId":"09b19b67-2e0b-4292-93de-ea1eed9f8586"}' -H "Content-Type: application/json" -X POST http://localhost/product/delete-category/
+
+Update Category
+curl -d '{"CategoryId":"241dc4a4-e22e-49a7-bb2e-6a82520902ee", "Name":"Electronics 2"}' -H "Content-Type: application/json" -X POST http://localhost/product/update-category/
+
+Get products
+curl -d '{"CategoryId":"241dc4a4-e22e-49a7-bb2e-6a82520902ee"}' -H "Content-Type: application/json" -X GET http://localhost/product/get-products/
+curl  -H "Content-Type: application/json" -X GET http://localhost/product/get-all-products/
+
+Add product
+curl -d '{"Name":"Huge TV 2", "Description":"It is huge", "Supplier":"LG Istanbul", "CategoryId":"241dc4a4-e22e-49a7-bb2e-6a82520902ee", "Price":"300", "UnitsInStock":"100"}' -H "Content-Type: application/json" -X POST http://localhost/product/add-new-product/
+
+Delete product
+curl -d '{"ProductId":"14cb7b0f-177e-4df4-b157-65b8947ebfdd"}' -H "Content-Type: application/json" -X POST http://localhost/product/delete-product/
+
+Update product
+curl -d '{"ProductId":"42a2946a-08ec-4dfc-9b19-8ac3e2ed9db4", "Name":"Very Huge TV", "Description":"It is huge", "Supplier":"LG Istanbul", "CategoryId":"241dc4a4-e22e-49a7-bb2e-6a82520902ee", "Price":"300", "UnitsInStock":"100"}' -H "Content-Type: application/json" -X POST http://localhost/product/update-product/
+
+ORDER
+Place Order
+curl -d '{"ProductId":"asd", "CustomerId": "5555", "TimeStamp":"18022018 03:25:08"}' -H "Content-Type: application/json" -X POST http://localhost/order/place-order/
+
+Get Orders
+curl -d '{"Type":"All", "Id":"0"}' -H "Content-Type: application/json" -X POST http://localhost/order/get-orders/
+curl -d '{"Type":"Customer", "Id":"555"}' -H "Content-Type: application/json" -X POST http://localhost/order/get-orders/
+curl -d '{"Type":"Single", "Id":"123"}' -H "Content-Type: application/json" -X POST http://localhost/order/get-orders/
+
+ACCOUNTING
+curl -H "Content-Type: application/json" -X GET http://localhost/accounting/get-revenue/
+
+Rabbit admin interface: docker exec [CONTAINER_NAME] rabbitmq-plugins enable rabbitmq_management
+CouchDB create users table: curl -X PUT http://accounting_usr:accounting_pass@127.0.0.1:5984/_users

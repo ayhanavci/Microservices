@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Edit Credit{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<div class="w3-container">    
+  <div class="w3-card-4">
+    <div class="w3-container w3-green">
+      <h3>Edit customer credit</h3>
+    </div>
+    <form action="/edit-customer-credit" method="POST" class="w3-container">
+      <p><label for="username">Customer Id</label>
+      <input name="username" id="username"   value="{{ customer['UserName'] }}" class="w3-input  w3-border" required readonly></p> 
+      <p><label for="fullname">Full Name</label>
+      <input name="fullname" id="fullname"   value="{{ customer['FullName'] }}" class="w3-input  w3-border" required readonly></p> 
+      <p><label for="credit">Credit</label>
+      <input name="credit" id="credit" value="{{ customer['Credit'] }}"  class="w3-input  w3-border" type="number" min="1" required></p> 
+      <p><button type="submit" class="w3-button w3-green" value="Submit">Save</button></p>            
+    </form>
+  </div>
+</div>
+{% else %}
+<p>Login first!</p>
+{% endif %}
+{% endblock %}

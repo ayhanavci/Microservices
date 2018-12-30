@@ -1,0 +1,31 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - eCommerce</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/w3.css">
+<div class="w3-bar w3-border w3-black w3-large">
+    <a href="/" class="w3-bar-item w3-button">Home</a>
+    {% if session['logged_in'] %}       
+    <a href="/categories" class="w3-bar-item w3-button">Categories</a>
+    <a href="/products" class="w3-bar-item w3-button">Products</a>
+    <a href="/orders" class="w3-bar-item w3-button">My Orders</a>
+    <a href="/update-user" class="w3-bar-item w3-button">My Info</a>    
+    <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+    {% else %}    
+    <a href="/register" class="w3-bar-item w3-button">Register</a>
+    <a href="/login" class="w3-bar-item w3-button">Login</a>
+    {% endif %}
+  </div>
+
+<section class="content">
+  <header>
+      <div class="w3-container">
+    {% block header %}{% endblock %}
+  </div>
+  </header>  
+  {% block content %}{% endblock %}
+  <p></p>
+  <p></p>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+</section>

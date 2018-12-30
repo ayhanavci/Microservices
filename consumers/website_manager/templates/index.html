@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h2>{% block title %}Home Page{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+<p><a href="/add-category" class="w3-bar-item">Add Category</a></p>
+<p><a href="/products" class="w3-bar-item">Add Product</a></p>
+{% else %}
+<p>Login to continue</p>
+{% endif %}
+{% endblock %}

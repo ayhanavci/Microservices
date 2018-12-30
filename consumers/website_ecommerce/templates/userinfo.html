@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}User Info Page{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<div class="w3-container">    
+    <div class="w3-card-4">
+      <div class="w3-container w3-green">
+        <h3>Update your information</h3>
+      </div>
+      <form action="/update-user" method="POST" class="w3-container">
+        <p><label for="username">Username</label>
+        <input name="username" id="username" value="{{ user_name }}"  class="w3-input  w3-border" disabled></p>
+        <p><label for="fullname">Full Name</label>
+        <input name="fullname" id="fullname" value="{{ full_name }}" class="w3-input  w3-border" required></p>
+        <p><label for="email">Email</label>
+        <input type="email" name="emailaddress" id="emailaddress" value="{{ email }}" class="w3-input  w3-border" required></p>          
+        <p><label for="password">Password</label>
+        <input type="password" name="password" class="w3-input  w3-border"  id="password" value="{{ password }}" required></p>
+        <p><label for="credit">Credit</label>
+        <input name="credit" id="credit" class="w3-input  w3-border"  value="{{ credit }}" disabled></p>        
+        <p><button type="submit" class="w3-button w3-green" value="Submit">Update</button>        </p>        
+      </form>
+    </div>
+  </div>
+{% else %}
+<p>Please login first</p>
+{% endif %}
+{% endblock %}

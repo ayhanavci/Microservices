@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  db-order:
+    restart: always
+    build: 
+      context: .
+      target: db-order
+    image: msdemo-db-order:v1.0
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:          
+      - type: bind
+        source: ./data
+        target: /var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${ORDERDB_USERNAME}
+      POSTGRES_PASSWORD: ${ORDERDB_PASSWORD}
+      POSTGRES_DB: order
+    networks:
+      default: {}      
+      msdemo-nw-order:
+        aliases:
+          - msdemo-db-order  
+networks:  
+  msdemo-nw-order:
+    external:
+      name: msdemo-nw-order
+

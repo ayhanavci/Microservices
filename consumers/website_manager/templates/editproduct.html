@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Edit Product{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<div class="w3-container">    
+  <div class="w3-card-4">
+    <div class="w3-container w3-green">
+      <h3>Edit product details</h3>
+    </div>
+    <form action="/edit-product" method="POST" class="w3-container">
+      <p><label for="productid">Product Id</label>
+      <input name="productid" id="productid"   value="{{ product[1] }}" class="w3-input  w3-border" required readonly></p> 
+      <p><label for="productname">Product Name</label>
+      <input name="productname" id="productname"  value="{{ product[2] }}"  class="w3-input  w3-border" required></p> 
+      <p><label for="select_category">Category</label>
+      <select name="select_category" class="w3-select w3-border" >
+        {% for category in categories %}
+        <option value="{{ category[1] }}" {% if product[5]==category[1] %} selected="selected"{% endif %}>{{ category[2] }}</option>
+        {% endfor %}
+      </select>       
+      <p><label for="description">Description</label>
+      <input name="description" id="description" value="{{ product[3] }}"class="w3-input  w3-border" required></p> 
+      <p><label for="supplier">Supplier</label>
+      <input name="supplier" id="supplier" value="{{ product[4] }}" class="w3-input  w3-border" required></p> 
+      <p><label for="price">Price</label>
+      <input name="price" id="price" value="{{ product[7] }}" class="w3-input  w3-border"  type="number" required></p> 
+      <p><label for="unitsinstock">Units In Stock</label>
+      <input name="unitsinstock" id="unitsinstock" value="{{ product[6] }}"  class="w3-input  w3-border" type="number" min="1" required></p> 
+      <p><button type="submit" class="w3-button w3-green" value="Submit">Save</button></p>            
+    </form>
+  </div>
+</div>
+{% else %}
+<p>Login first!</p>
+{% endif %}
+{% endblock %}

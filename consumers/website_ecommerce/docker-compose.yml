@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  web_ecommerce:
+    build: .  
+    image: msdemo-website-ecommerce:v1.0  
+    volumes:
+      - '.:/app'
+    ports:
+      - 5001:80
+    environment:
+      PYTHONUNBUFFERED: 1
+      FLASK_APP: "app/app.py"
+      FLASK_ENV: "development"
+      SERVICE_REGISTRY: "http://msdemo-reverse-proxy/"
+    networks:
+      default: {}
+      msdemo-nw:
+        aliases:
+          - msdemo-web-ecommerce
+networks:
+  msdemo-nw:
+    external:
+      name: msdemo-nw

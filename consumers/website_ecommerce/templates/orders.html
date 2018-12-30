@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}My Orders{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+
+<div class="w3-responsive">
+  <table class="w3-table-all w3-card-4 w3-hoverable w3-centered">
+    <thead>
+      <tr>
+        <th>GUID</th>
+        <th>USERID</th>
+        <th>PRODUCTID</th>     
+        <th>PRODUCTNAME</th>      
+        <th>PRICE</th>      
+        <th>ORDERSTATUS</th>      
+        <th>STOCKSTATUS</th>      
+        <th>CREDITSTATUS</th>      
+        <th>TIME</th>       
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}      
+      <tr>
+        <td class="align-middle">{{ order['GUID'] }}</td>
+        <td class="align-middle">{{ order['USERID'] }}</td>
+        <td class="align-middle">{{ order['PRODUCT'] }}</td> 
+        <td class="align-middle">{{ order['PRODUCTNAME'] }}</td> 
+        <td class="align-middle">{{ order['PRICE'] }}</td> 
+        <td class="align-middle">{% if order['ORDERSTATUS']==0 %}PENDING{% elif order['ORDERSTATUS']==1 %}CANCELED{% elif order['ORDERSTATUS']==2 %}APPROVED{% elif order['ORDERSTATUS']==3 %}FINALIZED{%else%}order['ORDERSTATUS']{%endif%}</td>                            
+        <td class="align-middle">{% if order['STOCKSTATUS']==0 %}PENDING{% elif order['STOCKSTATUS']==1 %}RECEIVED{% elif order['STOCKSTATUS']==2 %}DENIED{% elif order['STOCKSTATUS']==3 %}APPROVED{%else%}order['STOCKSTATUS']{%endif%}</td>  
+        <td class="align-middle">{% if order['CREDITSTATUS']==0 %}PENDING{% elif order['CREDITSTATUS']==1 %}RECEIVED{% elif order['CREDITSTATUS']==2 %}DENIED{% elif order['CREDITSTATUS']==3 %}APPROVED{%else%}order['CREDITSTATUS']{%endif%}</td>                  
+        <td class="align-middle">{{ order['TIME'] }}</td>         
+      </tr>    
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<br/> 
+<br/>
+
+{% else %}
+<p>Logged out content</p>
+{% endif %}
+{% endblock %}

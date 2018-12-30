@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h2>{% block title %}Home Page{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+<p>Logged in content</p>
+{% else %}
+<p>Logged out content</p>
+{% endif %}
+{% endblock %}

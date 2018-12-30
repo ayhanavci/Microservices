@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Products{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+
+<a href="{{ url_for('add_product') }}">Add New Product</a><br></br>
+
+<div class="w3-responsive">
+  <table class="w3-table-all w3-card-4 w3-hoverable w3-centered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Code</th>
+        <th>Name</th>      
+        <th>Description</th>      
+        <th>Supplier</th>      
+        <th>CategoryId</th>      
+        <th>Price</th>      
+        <th>Stock</th>
+        <th>Category Name</th>      
+        <th colspan=3>Commands</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td class="align-middle">{{ product[0] }}</td>
+        <td class="align-middle">{{ product[1] }}</td>
+        <td class="align-middle">{{ product[2] }}</td> 
+        <td class="align-middle">{{ product[3] }}</td> 
+        <td class="align-middle">{{ product[4] }}</td>                            
+        <td class="align-middle">{{ product[5] }}</td>
+        <td class="align-middle">{{ product[6] }}</td>
+        <td class="align-middle">{{ product[7] }}</td> 
+        <td class="align-middle">{{ product[8] }}</td>         
+        
+        <td class="align-middle">
+          <a href="{{ url_for('edit_product',id = product[1]) }}">Edit
+        </td>     
+        <td class="align-middle">
+          <a href="{{ url_for('delete_product',id = product[1]) }}">Delete
+        </td>
+      </tr>
+     
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<br/> 
+<br/>
+
+{% else %}
+<p>Logged out content</p>
+{% endif %}
+{% endblock %}

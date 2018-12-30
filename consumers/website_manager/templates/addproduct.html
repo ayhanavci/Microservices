@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Add New Product{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<div class="w3-container">    
+  <div class="w3-card-4">
+    <div class="w3-container w3-green">
+      <h3>Enter product details</h3>
+    </div>
+    <form action="/add-product" method="POST" class="w3-container">      
+      <p><label for="productname">Product Name</label>
+      <input name="productname" id="productname" class="w3-input  w3-border" required></p> 
+      <p><label for="select_category">Category</label>
+      <select name="select_category" class="w3-select w3-border" >
+        {% for category in categories %}
+        <option value="{{ category[1] }}">{{ category[2] }}</option>
+        {% endfor %}
+      </select>       
+      <p><label for="description">Description</label>
+      <input name="description" id="description" class="w3-input  w3-border" required></p> 
+      <p><label for="supplier">Supplier</label>
+      <input name="supplier" id="supplier" class="w3-input  w3-border" required></p> 
+      <p><label for="price">Price</label>
+      <input name="price" id="price" class="w3-input  w3-border"  type="number" required></p> 
+      <p><label for="unitsinstock">Units In Stock</label>
+      <input name="unitsinstock" id="unitsinstock" class="w3-input  w3-border" type="number" min="1" required></p> 
+      <p><button type="submit" class="w3-button w3-green" value="Submit">Add</button></p>            
+    </form>
+  </div>
+</div>
+{% else %}
+<p>Login first!</p>
+{% endif %}
+{% endblock %}

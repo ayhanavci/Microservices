@@ -1,0 +1,14 @@
+mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-grizzly2 \
+-DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false \
+-DgroupId=com.ms_demo -DartifactId=service_customer -Dpackage=com.ms_demo \
+-DarchetypeVersion=2.27
+
+mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-webapp \
+                -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false \
+                -DgroupId=com.ms_demo -DartifactId=service_customer -Dpackage=com.ms_demo \
+                -DarchetypeVersion=2.27
+
+mvn clean install -U
+mvn exec:java
+
+Keyboard input: docker run -i -t <imagename> <params>

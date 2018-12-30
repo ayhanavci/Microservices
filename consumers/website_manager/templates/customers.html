@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Customers{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+{% if session['logged_in'] %}
+
+
+<div class="w3-responsive">
+  <table class="w3-table-all w3-card-4 w3-hoverable w3-centered">
+    <thead>
+      <tr>
+        <th>UserName</th>
+        <th>FullName</th>
+        <th>Email</th>      
+        <th>Credit</th>
+        <th colspan=1>Commands</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in customers %}
+      <tr>
+        <td class="align-middle">{{ customer['UserName'] }}</td>
+        <td class="align-middle">{{ customer['FullName'] }}</td>
+        <td class="align-middle">{{ customer['Email'] }}</td>                
+        <td class="align-middle">{{ customer['Credit'] }}</td>                        
+        <td class="align-middle">
+          <a href="{{ url_for('edit_customer_credit',id = customer['UserName']) }}">Edit Credits
+        </td>             
+      </tr>     
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<br/> 
+<br/>
+
+{% else %}
+<p>Logged out content</p>
+{% endif %}
+{% endblock %}

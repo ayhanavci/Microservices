@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+
+
+    <TextView
+        android:id="@+id/txt_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        style="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:text="test"
+        android:textSize="15dp"
+        android:textColor="@android:color/black">
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/txt_product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:layout_centerInParent="true"
+        android:text="test"
+        android:textSize="15dp"
+        android:textColor="@android:color/black" >
+    </TextView>
+
+
+    <Button
+        android:id="@+id/txt_product_buy"
+        style="?android:textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:selectAllOnFocus="true"
+        android:background="@drawable/buttonshape"
+        android:textColor="#FFFFFF"
+        android:shadowRadius="5"
+        android:layout_alignParentRight="true"
+        android:text="@string/buy" >
+    </Button>
+
+</RelativeLayout>

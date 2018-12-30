@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Registration Page{% endblock %}</h2>
+{% endblock %}
+  
+{% block content %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+
+<div class="w3-container">    
+    <div class="w3-card-4">
+      <div class="w3-container w3-green">
+        <h3>Enter your credentials</h3>
+      </div>
+      <form action="/register" method="POST" class="w3-container">
+        <p><label for="username">Username</label>
+        <input name="username" id="username" class="w3-input  w3-border" required></p>
+        <p><label for="fullname">Full Name</label>
+        <input name="fullname" id="fullname" class="w3-input  w3-border" required></p>
+        <p><label for="email">Email</label>
+        <input type="email" name="emailaddress" id="emailaddress" class="w3-input  w3-border" required></p>          
+        <p><label for="password">Password</label>
+        <input type="password" name="password" class="w3-input  w3-border"  id="password" required></p>
+        <p><button type="submit" class="w3-button w3-green" value="Submit">Submit</button>        </p>
+      </form>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

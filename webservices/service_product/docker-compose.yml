@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  web-service-product:  
+    build:
+      context: .
+      target: web-service-product
+    image: msdemo-web-service-product:v1.0  
+    volumes:          
+      - type: bind
+        source: ./
+        target: /product    
+    command:
+      - /product/run.sh   
+    ports:
+      - 6004:80
+    environment:
+      PYTHONUNBUFFERED: 1
+      INSTALL_PATH: /product
+      FLASK_APP: app/product.py
+      FLASK_ENV: development     
+      EVENT_BUS_IP: msdemo-event-bus      
+      EVENT_BUS_USERNAME: msdemo_usr
+      EVENT_BUS_PASSWORD: msdemo_pass
+      DATABASE_NAME: product.db     
+    networks:
+      default: {}
+      msdemo_network:
+        aliases:
+          - msdemo-service-product      
+networks:
+  msdemo_network:
+    external:
+      name: msdemo-nw
