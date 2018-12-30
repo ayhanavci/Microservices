@@ -75,10 +75,6 @@ The only Saga sample. Occurs when user places an order request for a product. No
 
 ![saga](https://github.com/ayhanavci/Microservices/blob/master/img/ordersaga.png)
 
-And this is the Producer - Exchange - Routing Key - Queue - Consumer communication model of the Saga.
-
-![sagarouting](https://github.com/ayhanavci/Microservices/blob/master/img/eventbusrouting2.png)
-
 ## Running the Project
 
 All modules are prepared for Docker Compose. You need to create Docker networks written inside docker compose files, then run the compose files. The classic option is running compose from terminal. You need to repeat the following process for each module.
