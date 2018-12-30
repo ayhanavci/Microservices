@@ -73,8 +73,11 @@ I used Python with Flask often because it is arguably one of the fastest and cle
 
 The only Saga sample. Occurs when user places an order request for a product. Not all rollbacks are implemented. It looks messy but what happens here is: Customer places an order, If the customer has enough credit for the product price and if the product is in stock, the order succeeds.
 
-
 ![saga](https://github.com/ayhanavci/Microservices/blob/master/img/ordersaga.png)
+
+And this is the Producer - Exchange - Routing Key - Queue - Consumer communication model of the Saga.
+
+![sagarouting](https://github.com/ayhanavci/Microservices/blob/master/img/eventbusrouting2.png)
 
 ## Running the Project
 
