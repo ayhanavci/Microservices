@@ -71,7 +71,7 @@ I used Python with Flask often because it is arguably one of the fastest and cle
 
 ## Order Saga
 
-The only Saga sample. Occurs when user places an order request for a product. Not all rollbacks are implemented. It looks messy but what happens here is: Customer places an order, Product Stock, User Credit and Price are checked. If customer has enough credit and product is in stock, the order suceeds.
+The only Saga sample. Occurs when user places an order request for a product. Not all rollbacks are implemented. It looks messy but what happens here is: Customer places an order, If the customer has enough credit for the product price and if the product is in stock, the order succeeds.
 
 
 ![saga](https://github.com/ayhanavci/Microservices/blob/master/img/ordersaga.png)
