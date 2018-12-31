@@ -64,7 +64,6 @@ I used Python with Flask often because it is arguably one of the fastest and cle
 |Order Web Service|Web Service|Java|JDK-Jersey|[maven:3.6-jdk-8-alpine](https://hub.docker.com/_/maven)|
 |Product Web Service|Web Service|Python|Flask|[python:alpine](https://hub.docker.com/_/python/)|
 
-## Services API
 
 Api by service;
 
