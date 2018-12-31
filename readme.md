@@ -68,6 +68,20 @@ I used Python with Flask often because it is arguably one of the fastest and cle
 
 ![allsystem](https://github.com/ayhanavci/Microservices/blob/master/img/allsystem.png)
 
+## Service API
+
+| Customer (Python) | Order Service(Java)  | Product Service(Python)  | Accounting Service(JS) |
+| ---------------- | -------------- | ---------------- | ------------------ |
+| login-user | place-order | get-products | get-revenue |
+| add-user | get-orders | get-all-products ||
+| update-user || get-product-details ||
+| get-user || add-new-product ||
+| get-all-users || update-product ||
+| get-credit || delete-product ||
+| set-credit || get-categories ||
+||| add-new-category ||
+||| update-category ||
+||| delete-category ||
 
 ## Order Saga
 
