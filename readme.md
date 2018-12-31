@@ -66,6 +66,8 @@ I used Python with Flask often because it is arguably one of the fastest and cle
 
 ## Communication Topography
 
+As follows;
+
 ![allsystem](https://github.com/ayhanavci/Microservices/blob/master/img/allsystem.png)
 
 ## Service API
