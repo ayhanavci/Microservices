@@ -64,13 +64,9 @@ I used Python with Flask often because it is arguably one of the fastest and cle
 |Order Web Service|Web Service|Java|JDK-Jersey|[maven:3.6-jdk-8-alpine](https://hub.docker.com/_/maven)|
 |Product Web Service|Web Service|Python|Flask|[python:alpine](https://hub.docker.com/_/python/)|
 
-## Communication Topography
+## Services API
 
-As follows;
-
-![allsystem](https://github.com/ayhanavci/Microservices/blob/master/img/allsystem.png)
-
-## Service API
+Api by service;
 
 | Customer (Python) | Order Service(Java)  | Product Service(Python)  | Accounting Service(JS) |
 | ---------------- | -------------- | ---------------- | ------------------ |
@@ -84,6 +80,14 @@ As follows;
 ||| add-new-category ||
 ||| update-category ||
 ||| delete-category ||
+
+## Communication Topography
+
+As follows;
+
+![allsystem](https://github.com/ayhanavci/Microservices/blob/master/img/allsystem.png)
+
+
 
 ## Order Saga
 
